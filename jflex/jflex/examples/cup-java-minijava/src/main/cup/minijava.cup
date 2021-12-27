@@ -1,0 +1,62 @@
+/*
+ * Copyright (C) 1998 C. Scott Ananian <cananian@alumni.princeton.edu>
+ * Copyright (C) 1999 Gerwin Klein <lsf@jflex.de>
+ * Copyright (C) 2018 Google LLC
+ *
+ * This program is released under the terms of the GPL; see the file
+ * COPYING for more details.  There is NO WARRANTY on this code.
+ */
+package jflex.examples.minijava;
+
+import java_cup.runtime.*;
+
+class Parser;
+
+/** Parser for a lamguages inspired by Java. */
+
+// Keywords
+
+// Identifier matches each string that starts with a character of class jletter followed by zero or
+// more characters of class jletterdigit
+terminal java.lang.String IDENTIFIER; // name
+
+//Keywords
+terminal PROGRAM;
+terminal INTEGER;
+// Literals
+
+// Operators
+terminal EQ;
+terminal EQEQ; // equality_expression
+terminal PLUS;
+terminal INTEGER_CONSTANT;
+
+
+
+
+// 19.3) Lexical Structure
+non terminal literal;
+// 19.4) Types, Values, and Variables
+non terminal primitive_type;
+// 19.5) Names
+non terminal name;
+non terminal type;
+non terminal ops;
+
+// Our simplified grammar
+non terminal goal;
+
+// TODO
+start with goal;
+
+goal ::=	name | ops
+    ;
+
+
+
+// 19.5) Names
+name ::= IDENTIFIER
+	 ;
+
+ops ::= EQ | EQEQ | PLUS
+    ;

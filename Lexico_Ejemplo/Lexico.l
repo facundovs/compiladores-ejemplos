@@ -16,19 +16,20 @@ int yyerror(void);
 DIGITO			[0-9]
 LETRA			[a-zA-Z]
 
-CTE		        {DIGITO}+
-ID			{LETRA}({LETRA}|{DIGITO})*
-OP_AS   		":""="
-OP_SUM		        ["+"]
-OP_MUL                  ["*"]
+CTE		     {DIGITO}+
+ID			   {LETRA}({LETRA}|{DIGITO})*
+OP_AS   	 ":""="
+OP_SUM		 ["+"]
+OP_MUL     ["*"]
 
 %%
-
+"if"        printf("\nPalabra reservada: %s\n", yytext);  
 {CTE}			  printf("\nConstante: %s\n", yytext);  
 {ID}			  printf("\nIdentificador: %s\n", yytext);
 {OP_SUM}		printf("\nSuma: %s\n", yytext);
 {OP_AS}			printf("\nAsignacion: %s\n", yytext);
 {OP_MUL}		printf("\nMultiplicacion: %s\n", yytext);
+
 "\n"      		
 "\t"
 "\n\t"
@@ -57,10 +58,3 @@ int yyerror(void)
    printf("Error léxico: Caracter inválido: %s\n", yytext);
 	 exit (1);
 }
-
-
-
-
-
-
-
